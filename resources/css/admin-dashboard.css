@@ -1,0 +1,1519 @@
+
+/* ==========================================
+   NAYLA SERVICE - ADMIN DASHBOARD
+========================================== */
+
+:root {
+    --bg: #0d0e0e;
+    --sidebar: #111411;
+    --panel: #171818;
+    --border: #303131;
+    --text: #f5f3f0;
+    --muted: #92918f;
+    --gold: #edae50;
+    --sidebar-width: 234px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ==========================================
+   LAYOUT UTAMA
+========================================== */
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+
+    display: flex;
+    flex-direction: column;
+
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    height: 100vh;
+
+    padding: 23px 15px 18px;
+
+    background: var(--sidebar);
+    border-right: 1px solid #2d332e;
+}
+
+.main-area {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ==========================================
+   SIDEBAR SESUAI UPDATE STATUS
+========================================== */
+
+/* Logo Nayla Service */
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-height: 39px;
+    padding: 0 7px;
+    margin-bottom: 44px;
+
+    font-family: 'Manrope', sans-serif;
+    white-space: nowrap;
+}
+
+.brand-logo {
+    display: grid;
+    place-items: center;
+
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+
+    background: linear-gradient(
+        180deg,
+        #f5c977,
+        #e9aa4e
+    );
+
+    color: #181309;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.brand-name {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0;
+}
+
+.brand-name em {
+    color: var(--gold);
+    font-style: normal;
+}
+
+/* Area navigasi */
+
+.sidebar-content {
+    flex: 1;
+    min-height: 0;
+}
+
+.sidebar-label {
+    margin: 0 0 17px;
+    padding: 0 9px;
+
+    color: #646c64;
+
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 1.6px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+/* Menu sidebar */
+
+.nav-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    min-height: 45px;
+    padding: 0 13px;
+
+    background: transparent;
+    color: #969c95;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+.nav-item:hover {
+    background: #20251f;
+    color: #f1f0ec;
+}
+
+/* Menu aktif */
+
+.nav-item.active {
+    background: #29241d;
+    color: var(--gold);
+
+    border-color: #644a29;
+    font-weight: 500;
+}
+
+.nav-item.active::before {
+    content: '';
+
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 0;
+
+    width: 3px;
+
+    background: var(--gold);
+    border-radius: 4px;
+}
+
+/* Ikon Lucide sidebar */
+
+.nav-item .nav-icon {
+    display: block;
+
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+
+    stroke-width: 1.7;
+}
+
+/* Badge jumlah pesanan */
+
+.nav-count {
+    display: grid;
+    place-items: center;
+
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+    flex-shrink: 0;
+
+    background: #342718;
+    color: var(--gold);
+
+    border-radius: 50%;
+    font-size: 10px;
+}
+
+/* Profil di bawah sidebar */
+
+.sidebar-footer {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-top: auto;
+    padding: 18px 7px 0;
+
+    border-top: 1px solid #2d332e;
+}
+
+.admin-avatar,
+.profile-avatar {
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+
+    background: linear-gradient(
+        180deg,
+        #f5c977,
+        #e9aa4e
+    );
+
+    color: #171208;
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.admin-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.admin-identity strong {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.admin-identity span {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+/* ==========================================
+   TOPBAR
+========================================== */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 85px;
+    padding: 0 35px;
+
+    border-bottom: 1px solid #272828;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-date {
+    margin-bottom: 7px;
+    color: var(--gold);
+
+    font-size: 10px;
+    letter-spacing: 1.4px;
+}
+
+.topbar h1 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.mobile-menu-btn {
+    display: none;
+    place-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    background: #202121;
+    color: #fff;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.mobile-menu-btn svg {
+    width: 21px;
+    height: 21px;
+}
+
+.profile-avatar {
+    width: 38px;
+    height: 38px;
+}
+
+/* ==========================================
+   KONTEN DASHBOARD
+========================================== */
+
+.dashboard-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 43px 44px 70px;
+}
+
+.welcome-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+
+    margin-bottom: 30px;
+}
+
+.welcome-text {
+    min-width: 0;
+}
+
+.eyebrow {
+    margin-bottom: 17px;
+    color: var(--gold);
+
+    font-size: 10px;
+    letter-spacing: 1.8px;
+}
+
+.welcome-text h2 {
+    margin-bottom: 10px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -1.5px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   KALENDER UTAMA
+========================================== */
+
+.dashboard-date {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.nayla-calendar {
+    position: relative;
+
+    display: inline-flex;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.dashboard-date .nayla-calendar-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+
+    width: 255px;
+    height: 52px;
+    padding: 0 15px;
+
+    background: #151515;
+    color: var(--gold);
+
+    border: 1px solid #303030;
+    border-radius: 13px;
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    white-space: nowrap;
+}
+
+.dashboard-date .calendar-main-icon {
+    width: 21px;
+    height: 21px;
+    flex-shrink: 0;
+}
+
+.dashboard-date .calendar-chevron {
+    width: 14px;
+    height: 14px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* ==========================================
+   KALENDER FILTER TABEL
+========================================== */
+
+.table-date .nayla-calendar-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    min-width: 170px;
+    height: 43px;
+    padding: 0 12px;
+
+    background: #171818;
+    color: #e4e1dc;
+
+    border: 1px solid #393a3a;
+    border-radius: 8px;
+
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.table-date .nayla-calendar-trigger:hover,
+.table-date .nayla-calendar-trigger:focus-visible {
+    border-color: var(--gold);
+    outline: none;
+}
+
+.table-date .nayla-calendar-trigger > svg {
+    display: block;
+
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.table-date .calendar-chevron {
+    margin-left: auto;
+}
+
+/* ==========================================
+   POPUP KALENDER
+========================================== */
+
+.nayla-calendar-popup {
+    position: absolute;
+
+    top: calc(100% + 9px);
+    right: 0;
+    z-index: 999;
+
+    width: 300px;
+    max-width: calc(100vw - 32px);
+
+    padding: 10px 9px 8px;
+
+    background: #303030;
+    color: #f3f3f3;
+
+    border: 1px solid #484848;
+    border-radius: 17px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .55);
+}
+
+.nayla-calendar-popup[hidden] {
+    display: none !important;
+}
+
+.calendar-month-header {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) 28px;
+    align-items: center;
+    gap: 5px;
+
+    height: 42px;
+    padding: 0 4px;
+    margin-bottom: 7px;
+}
+
+.calendar-nav {
+    display: grid;
+    place-items: center;
+
+    width: 28px;
+    height: 28px;
+    padding: 0;
+
+    background: transparent;
+    color: #dedede;
+
+    border: 0;
+    border-radius: 50%;
+
+    font-size: 24px;
+    line-height: 1;
+}
+
+.calendar-nav:hover {
+    background: #484848;
+    color: var(--gold);
+}
+
+.calendar-title-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 0;
+}
+
+.calendar-month-select,
+.calendar-year-select {
+    height: 30px;
+    min-width: 0;
+    padding: 0 3px;
+
+    background: #303030;
+    color: #f4f4f4;
+
+    border: 0;
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 700;
+    outline: none;
+}
+
+.calendar-month-select {
+    width: 112px;
+}
+
+.calendar-year-select {
+    width: 66px;
+}
+
+.calendar-month-select:hover,
+.calendar-year-select:hover,
+.calendar-month-select:focus,
+.calendar-year-select:focus {
+    background: #454545;
+}
+
+.calendar-month-select option,
+.calendar-year-select option {
+    background: #303030;
+    color: white;
+}
+
+/* ==========================================
+   GRID KALENDER
+========================================== */
+
+.calendar-days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 2px;
+
+    padding: 0 2px 6px;
+}
+
+.calendar-weekday {
+    display: grid;
+    place-items: center;
+
+    height: 30px;
+
+    color: #c8c8c8;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.calendar-day-button {
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 34px;
+    min-width: 0;
+    padding: 0;
+
+    background: transparent;
+    color: #f1f1f1;
+
+    border: 0;
+    border-radius: 50%;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.calendar-day-button.other-month {
+    color: #858585;
+}
+
+.calendar-day-button:hover {
+    background: #4a4a4a;
+    color: white;
+}
+
+.calendar-day-button.selected,
+.calendar-day-button.selected:hover {
+    background: #f2f2f2;
+    color: #242424;
+    font-weight: 700;
+}
+
+.calendar-day-button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+}
+
+.calendar-popup-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    padding: 10px 5px 2px;
+    margin-top: 3px;
+
+    border-top: 1px solid #494949;
+}
+
+.calendar-popup-footer button {
+    padding: 7px 10px;
+
+    background: #3b3b3b;
+    color: #ededed;
+
+    border: 1px solid #555;
+    border-radius: 7px;
+
+    font-size: 11px;
+}
+
+.calendar-popup-footer button:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+/* ==========================================
+   KARTU STATISTIK
+========================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+    min-height: 179px;
+
+    padding: 19px 17px;
+
+    background: linear-gradient(
+        140deg,
+        #191a1a,
+        #151616
+    );
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+}
+
+.stat-icon {
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+    margin-bottom: 19px;
+
+    border-radius: 10px;
+}
+
+.stat-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.8;
+}
+
+.gold-icon,
+.amber-icon {
+    background: #30271b;
+    color: var(--gold);
+}
+
+.blue-icon {
+    background: #17303b;
+    color: #6db9ed;
+}
+
+.purple-icon {
+    background: #30213d;
+    color: #be8bea;
+}
+
+.green-icon {
+    background: #183c2c;
+    color: #46c78b;
+}
+
+.red-icon {
+    background: #3b2222;
+    color: #ef6262;
+}
+
+.stat-card p {
+    margin-bottom: 10px;
+
+    color: #b3b0ac;
+    font-size: 12px;
+}
+
+.stat-card strong {
+    margin-bottom: 10px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-card small {
+    color: #81807c;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   PEMASUKAN
+========================================== */
+
+.revenue-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    min-height: 144px;
+    padding: 25px;
+    margin-bottom: 34px;
+
+    background: linear-gradient(
+        110deg,
+        #1a1b1b,
+        #171818
+    );
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+}
+
+.revenue-left {
+    display: flex;
+    align-items: center;
+    gap: 19px;
+}
+
+.revenue-icon {
+    display: grid;
+    place-items: center;
+
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+
+    background: #31271b;
+    color: var(--gold);
+    border-radius: 12px;
+}
+
+.revenue-icon svg {
+    width: 23px;
+    height: 23px;
+    stroke-width: 1.8;
+}
+
+.revenue-left p {
+    margin-bottom: 12px;
+
+    color: #96918b;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.revenue-left strong {
+    display: block;
+    margin-bottom: 7px;
+
+    color: var(--gold);
+
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(22px, 2.6vw, 32px);
+}
+
+.revenue-left small {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.revenue-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 7px;
+
+    height: 70px;
+    padding: 5px;
+    flex-shrink: 0;
+}
+
+.revenue-bars span {
+    display: block;
+
+    width: 9px;
+
+    background: linear-gradient(
+        180deg,
+        #c49859,
+        #533e26
+    );
+
+    border-radius: 4px 4px 0 0;
+}
+
+/* ==========================================
+   DAFTAR PESANAN
+========================================== */
+
+.orders-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    margin-bottom: 17px;
+}
+
+.orders-heading h2 {
+    margin-bottom: 7px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.orders-heading p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.outline-btn,
+.filter-btn,
+.detail-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 11px 14px;
+
+    background: #1c1d1d;
+    color: #e7e5e2;
+
+    border: 1px solid #3b3c3c;
+    border-radius: 9px;
+
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.outline-btn svg,
+.filter-btn svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+.outline-btn:hover,
+.filter-btn:hover,
+.detail-btn:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+.orders-card {
+    position: relative;
+
+    background: #131414;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    overflow: visible;
+}
+
+/* ==========================================
+   SEARCH DAN FILTER
+========================================== */
+
+.filters-bar {
+    position: relative;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 15px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 10px;
+
+    min-width: 180px;
+    height: 43px;
+    padding: 0 13px;
+
+    border: 1px solid #393a3a;
+    border-radius: 8px;
+}
+
+.search-wrapper:focus-within {
+    border-color: var(--gold);
+}
+
+.search-symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #898884;
+}
+
+.search-symbol svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.search-wrapper input {
+    width: 100%;
+    min-width: 0;
+
+    background: transparent;
+    color: white;
+
+    border: 0;
+    outline: 0;
+
+    font-size: 12px;
+}
+
+.search-wrapper input::placeholder {
+    color: #777773;
+}
+
+.filters-bar select {
+    min-width: 115px;
+    max-width: 185px;
+    height: 43px;
+    padding: 0 11px;
+
+    background: #171818;
+    color: #dfdcd8;
+
+    border: 1px solid #393a3a;
+    border-radius: 8px;
+
+    font-size: 12px;
+    outline: none;
+}
+
+.filters-bar select:focus {
+    border-color: var(--gold);
+}
+
+/* Override khusus dropdown di dalam popup kalender */
+
+.filters-bar .calendar-month-select,
+.filters-bar .calendar-year-select {
+    height: 30px;
+    min-width: 0;
+    max-width: none;
+    padding: 0 3px;
+
+    background: #303030;
+    color: #f4f4f4;
+
+    border: 0;
+    border-radius: 5px;
+}
+
+.filters-bar .calendar-month-select {
+    width: 112px;
+}
+
+.filters-bar .calendar-year-select {
+    width: 66px;
+}
+
+/* ==========================================
+   TABEL PESANAN
+========================================== */
+
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.orders-table {
+    width: 100%;
+    min-width: 960px;
+
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.orders-table th {
+    padding: 17px 14px;
+
+    border-bottom: 1px solid #333;
+
+    color: #888782;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .6px;
+}
+
+.orders-table td {
+    padding: 16px 14px;
+
+    border-bottom: 1px solid #303131;
+
+    color: #bcbab6;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.orders-table tbody tr:hover {
+    background: #1d1e1e;
+}
+
+.order-id,
+.customer-name {
+    display: block;
+    margin-bottom: 7px;
+
+    color: #f2f0ed;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.cell-subtext {
+    display: block;
+
+    color: #88857f;
+    font-size: 10px;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 10px;
+
+    border-radius: 20px;
+    font-size: 10px;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.status-badge.warning {
+    background: #382c1b;
+    color: #dfad66;
+}
+
+.status-badge.info {
+    background: #183342;
+    color: #69bceb;
+}
+
+.status-badge.purple {
+    background: #30223d;
+    color: #b68cda;
+}
+
+.status-badge.success {
+    background: #18392c;
+    color: #4bd196;
+}
+
+.status-badge.cancelled {
+    background: #35291b;
+    color: #cc9754;
+}
+
+.price-cell {
+    color: #f0eeeb !important;
+    font-weight: 700;
+}
+
+.detail-btn {
+    padding: 9px 12px;
+
+    color: var(--gold);
+    font-size: 11px;
+}
+
+.table-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 15px;
+
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.demo-indicator {
+    color: var(--gold);
+}
+
+.empty-state {
+    padding: 30px 15px;
+
+    color: #b4b1ad;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* ==========================================
+   MODAL DETAIL PESANAN
+========================================== */
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: grid;
+    place-items: center;
+
+    padding: 18px;
+
+    background: rgba(0, 0, 0, .78);
+}
+
+.detail-modal {
+    width: min(100%, 530px);
+    max-height: 90vh;
+
+    overflow-y: auto;
+    padding: 25px;
+
+    background: #1b1c1c;
+
+    border: 1px solid #48423a;
+    border-radius: 16px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.modal-header .eyebrow {
+    margin-bottom: 8px;
+}
+
+.modal-header h2 {
+    font-size: 22px;
+}
+
+.modal-close {
+    display: grid;
+    place-items: center;
+
+    width: 35px;
+    height: 35px;
+
+    background: #2b2c2c;
+    color: white;
+
+    border: 1px solid #424343;
+    border-radius: 8px;
+}
+
+.modal-close svg {
+    width: 19px;
+    height: 19px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #343535;
+    font-size: 12px;
+}
+
+.detail-row span {
+    color: var(--muted);
+}
+
+.detail-row strong {
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 22px;
+}
+
+/* ==========================================
+   TOAST
+========================================== */
+
+.toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1200;
+
+    max-width: 320px;
+    padding: 14px 18px;
+
+    background: #30271b;
+    color: #f0cc8b;
+
+    border: 1px solid #7d5d32;
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    opacity: 0;
+    transform: translateY(15px);
+    pointer-events: none;
+
+    transition: .25s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   OVERLAY SIDEBAR MOBILE
+========================================== */
+
+.sidebar-overlay {
+    display: none;
+}
+
+/* ==========================================
+   RESPONSIVE LAPTOP
+========================================== */
+
+@media (max-width: 1400px) {
+
+    .dashboard-content {
+        padding: 35px 28px 60px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .filters-bar {
+        flex-wrap: wrap;
+    }
+
+    .search-wrapper {
+        min-width: 240px;
+    }
+}
+
+/* ==========================================
+   RESPONSIVE TABLET
+========================================== */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+
+        transform: translateX(-100%);
+        transition: transform .25s;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+
+        background: rgba(0, 0, 0, .65);
+    }
+
+    .mobile-menu-btn {
+        display: grid;
+    }
+
+    .topbar {
+        padding: 0 22px;
+    }
+
+    .dashboard-content {
+        padding: 27px 20px 50px;
+    }
+
+    .welcome-section {
+        flex-wrap: wrap;
+    }
+}
+
+/* ==========================================
+   RESPONSIVE MOBILE
+========================================== */
+
+@media (max-width: 640px) {
+
+    .welcome-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .welcome-text h2 {
+        font-size: 27px;
+    }
+
+    .dashboard-date,
+    .dashboard-date .nayla-calendar {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .dashboard-date .nayla-calendar-trigger {
+        width: 100%;
+        height: 62px;
+        gap: 11px;
+        padding: 0 15px;
+
+        border-radius: 14px;
+
+        font-size: 15px;
+        letter-spacing: .5px;
+    }
+
+    .dashboard-date .calendar-main-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .nayla-calendar-popup {
+        width: min(300px, calc(100vw - 40px));
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .stat-card {
+        min-height: 150px;
+        padding: 14px;
+    }
+
+    .stat-card strong {
+        font-size: 25px;
+    }
+
+    .revenue-card {
+        padding: 18px;
+    }
+
+    .revenue-bars {
+        display: none;
+    }
+
+    .orders-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filters-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-wrapper,
+    .filters-bar > select,
+    .filter-btn {
+        width: 100%;
+        max-width: none;
+    }
+
+    .table-date,
+    .table-date .nayla-calendar-trigger {
+        width: 100%;
+    }
+
+    .table-date .nayla-calendar-popup {
+        left: 0;
+        right: auto;
+    }
+
+    .top-date {
+        font-size: 9px;
+    }
+
+    .topbar h1 {
+        font-size: 16px;
+    }
+}

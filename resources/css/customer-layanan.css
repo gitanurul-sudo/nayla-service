@@ -1,0 +1,722 @@
+
+/* =====================================================
+   NAYLA SERVICE
+   CUSTOMER LAYANAN - REVISI UKURAN
+===================================================== */
+
+/* ROOT */
+
+:root {
+    --bg: #111211;
+    --card: #202120;
+    --gold: #d4a569;
+    --gold-light: #f2b85f;
+    --white: #f7f7f5;
+    --muted: #92918d;
+    --border: #343634;
+}
+
+/* RESET */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+/* PAGE CONTAINER */
+
+.page-container {
+    width: 100%;
+    max-width: 1440px;
+    min-height: 100vh;
+    padding: 0 100px;
+    margin: 0 auto;
+}
+
+/* =====================================================
+   NAVBAR HALAMAN LAYANAN TERPISAH
+
+   Navbar utama di Beranda tetap mengikuti
+   customer-home.css.
+===================================================== */
+
+.site-header {
+    border-bottom: 1px solid #2a2a29;
+}
+
+.navbar {
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+}
+
+.brand-logo {
+    width: 34px;
+    height: 34px;
+    background: var(--gold);
+    border-radius: 8px;
+    color: #171511;
+    font-size: 16px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand > span {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+
+.brand strong {
+    color: var(--gold);
+}
+
+.nav-links {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    margin-right: 27%;
+}
+
+.nav-links a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 13px;
+    font-weight: 500;
+    color: #8d8d89;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--white);
+}
+
+.nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--gold);
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: var(--gold);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* =====================================================
+   SECTION LAYANAN
+===================================================== */
+
+.services-section {
+    width: 100%;
+    padding: 35px 0 60px;
+
+    background: radial-gradient(
+        ellipse at 80% 20%,
+        rgba(77, 57, 29, 0.08),
+        transparent 45%
+    );
+}
+
+/* HEADING */
+
+.services-section .services-heading {
+    margin-bottom: 30px;
+}
+
+.services-section .eyebrow {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+    margin-bottom: 16px;
+}
+
+/* JUDUL LAYANAN */
+
+.services-section .services-heading h1 {
+    font-family: 'Manrope', sans-serif;
+
+    font-size: clamp(28px, 2.7vw, 39px);
+    font-weight: 700;
+
+    letter-spacing: -1.8px;
+    line-height: 1.23;
+
+    margin-bottom: 11px;
+}
+
+.services-section .services-heading h1 span {
+    color: var(--gold);
+}
+
+/* DESKRIPSI */
+
+.services-section .subtitle {
+    max-width: 680px;
+    color: #969693;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   FILTER KATEGORI
+===================================================== */
+
+.services-section .filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+    margin-bottom: 20px;
+}
+
+/* TOMBOL FILTER */
+
+.services-section .filter-button {
+    min-width: 140px;
+    height: 38px;
+    padding: 0 14px;
+
+    border-radius: 8px;
+    border: 1px solid #353735;
+
+    background: #171917;
+    color: #999995;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.services-section .filter-button:hover {
+    border-color: var(--gold);
+    color: var(--white);
+}
+
+/* FILTER AKTIF */
+
+.services-section .filter-button.active {
+    background: linear-gradient(
+        110deg,
+        #f4bd68,
+        #dfa34f
+    );
+
+    border-color: #e5ad59;
+    color: #171511;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 25px rgba(212, 165, 105, 0.12);
+}
+
+/* =====================================================
+   GRID LAYANAN
+===================================================== */
+
+.services-section .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+}
+
+/* =====================================================
+   KARTU LAYANAN
+===================================================== */
+
+.services-section .service-card {
+    position: relative;
+
+    height: 215px;
+
+    border-radius: 11px;
+    overflow: hidden;
+
+    background: var(--card);
+    border: 1px solid #373937;
+
+    isolation: isolate;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+/* SEMBUNYIKAN KARTU */
+
+.services-section .service-card[hidden] {
+    display: none !important;
+}
+
+/* HOVER KARTU */
+
+.services-section .service-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(212, 165, 105, 0.65);
+}
+
+/* =====================================================
+   GAMBAR BACKGROUND
+===================================================== */
+
+.services-section .service-image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    background-color: #292b2b;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transition: transform 0.35s ease;
+}
+
+.services-section .service-card:hover .service-image {
+    transform: scale(1.06);
+}
+
+/* =====================================================
+   OVERLAY GAMBAR
+===================================================== */
+
+.services-section .service-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 9, 9, 0.87) 0%,
+            rgba(7, 9, 9, 0.57) 55%,
+            rgba(7, 9, 9, 0.23) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.78) 0%,
+            rgba(0, 0, 0, 0) 75%
+        );
+}
+
+/* =====================================================
+   KONTEN KARTU
+===================================================== */
+
+.services-section .service-content {
+    position: relative;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 16px 18px;
+}
+
+/* =====================================================
+   IKON LAYANAN
+===================================================== */
+
+.services-section .service-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: linear-gradient(
+        135deg,
+        #f5bf6d,
+        #e9a844
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #171511;
+
+    margin-bottom: 16px;
+}
+
+.services-section .service-icon svg {
+    width: 19px;
+    height: 19px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* =====================================================
+   TEKS KARTU LAYANAN
+===================================================== */
+
+.services-section .service-text {
+    max-width: 95%;
+}
+
+/* JUDUL KARTU */
+
+.services-section .service-text h2 {
+    font-family: 'Manrope', sans-serif;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+
+    margin-bottom: 7px;
+}
+
+/* DESKRIPSI KARTU */
+
+.services-section .service-text p {
+    max-width: 260px;
+
+    font-size: 10px;
+    color: #b4b4b0;
+
+    line-height: 1.6;
+}
+
+/* =====================================================
+   TOMBOL TAMPILKAN SEMUA
+===================================================== */
+
+.services-section .show-more-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+    margin-top: 30px;
+}
+
+/* TOMBOL */
+
+.services-section .show-more-button {
+    min-width: 165px;
+    height: 38px;
+    padding: 0 17px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    border: 1px solid #866335;
+    border-radius: 8px;
+
+    background: transparent;
+    color: #d4a569;
+
+    font-size: 11px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.services-section .show-more-button:hover {
+    background: rgba(212, 165, 105, 0.1);
+    border-color: var(--gold);
+}
+
+.services-section .show-more-button[hidden] {
+    display: none !important;
+}
+
+.services-section
+.show-more-button[aria-expanded="true"]
+.chevron {
+    transform: rotate(180deg);
+}
+
+/* =====================================================
+   IKON PANAH
+===================================================== */
+
+.services-section .chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 16px;
+
+    font-size: 17px;
+    line-height: 1;
+
+    vertical-align: middle;
+
+    transition: transform 0.2s ease;
+}
+
+.services-section .chevron svg {
+    width: 15px;
+    height: 15px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* COUNTER LAYANAN */
+
+.services-section .service-counter {
+    color: #656560;
+    font-size: 10px;
+}
+
+/* =====================================================
+   RESPONSIVE LAPTOP
+===================================================== */
+
+@media (max-width: 1200px) {
+
+    .page-container {
+        padding: 0 50px;
+    }
+
+    .nav-links {
+        margin-right: 4%;
+    }
+
+    .services-section .services-heading h1 {
+        font-size: 36px;
+    }
+
+    .services-section .filter-button {
+        min-width: 135px;
+    }
+
+    .services-section .service-card {
+        height: 215px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .page-container {
+        padding: 0 30px;
+    }
+
+    .nav-links {
+        margin-right: 0;
+        gap: 21px;
+    }
+
+    .services-section .services-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .services-section .services-heading h1 {
+        font-size: 33px;
+    }
+
+    .services-section .filter-button {
+        min-width: 115px;
+    }
+
+    .services-section .service-card {
+        height: 220px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .page-container {
+        padding: 0 20px;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+
+        height: auto;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        background: #1b1b1b;
+
+        border: 1px solid var(--border);
+        border-radius: 0 0 12px 12px;
+
+        z-index: 20;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        height: auto;
+        padding: 18px 20px;
+    }
+
+    .nav-links a.active::after {
+        display: none;
+    }
+
+    /* SECTION LAYANAN */
+
+    .services-section {
+        padding: 35px 0 50px;
+    }
+
+    .services-section .services-heading {
+        margin-bottom: 25px;
+    }
+
+    .services-section .eyebrow {
+        margin-bottom: 13px;
+    }
+
+    .services-section .services-heading h1 {
+        font-size: 29px;
+        line-height: 1.25;
+        letter-spacing: -1.2px;
+    }
+
+    .services-section .subtitle {
+        font-size: 12px;
+    }
+
+    /* FILTER */
+
+    .services-section .filter-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
+    }
+
+    .services-section .filter-button {
+        width: 100%;
+        min-width: 0;
+        height: 38px;
+    }
+
+    /* GRID */
+
+    .services-section .services-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    /* KARTU */
+
+    .services-section .service-card {
+        height: 220px;
+    }
+
+    .services-section .service-content {
+        padding: 17px 18px;
+    }
+
+    .services-section .service-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .services-section .service-text h2 {
+        font-size: 14px;
+    }
+
+    .services-section .service-text p {
+        font-size: 11px;
+    }
+
+    .services-section .show-more-container {
+        margin-top: 25px;
+    }
+}

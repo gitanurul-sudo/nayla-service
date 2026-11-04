@@ -1,0 +1,1105 @@
+
+/* =====================================================
+   NAYLA SERVICE
+   CUSTOMER HOME - COMPLETE CSS
+===================================================== */
+
+/* =========================
+   ROOT
+========================= */
+
+:root {
+    --bg: #121213;
+    --surface: #202020;
+    --gold: #d4a569;
+    --white: #f7f7f5;
+    --muted: #aaa9a4;
+    --border: #2d2d2b;
+    --navbar-height: 75px;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding-top: var(--navbar-height);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* =========================
+   PAGE CONTAINER
+========================= */
+
+.page-container {
+    width: 100%;
+    max-width: 1440px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0 100px;
+}
+
+/* =========================
+   NAVBAR FULL WIDTH
+========================= */
+
+body > .site-header,
+.site-header {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    height: var(--navbar-height) !important;
+    min-height: var(--navbar-height) !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background-color: #111112 !important;
+    border-bottom: 1px solid #2a2a29;
+
+    z-index: 99999 !important;
+    box-sizing: border-box;
+}
+
+/* =========================
+   NAVBAR CONTAINER
+========================= */
+
+.site-header .navbar {
+    width: 100%;
+    max-width: 1440px;
+
+    height: var(--navbar-height) !important;
+    min-height: var(--navbar-height) !important;
+    max-height: var(--navbar-height) !important;
+
+    margin: 0 auto !important;
+    padding: 0 100px !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+    box-sizing: border-box;
+}
+
+/* =========================
+   BRAND
+========================= */
+
+.site-header .brand {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.site-header .brand-logo {
+    width: 34px !important;
+    height: 34px !important;
+
+    min-width: 34px;
+    min-height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--gold);
+    border-radius: 8px;
+
+    color: #171511;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    flex-shrink: 0;
+}
+
+.site-header .brand > span {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+
+.site-header .brand strong {
+    color: var(--gold);
+}
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
+
+.site-header .nav-links {
+    position: relative;
+
+    display: flex;
+    align-items: stretch;
+
+    height: var(--navbar-height) !important;
+    min-height: var(--navbar-height) !important;
+    max-height: var(--navbar-height) !important;
+
+    gap: 35px;
+
+    margin: 0 27% 0 0 !important;
+    padding: 0 !important;
+
+    align-self: center;
+    box-sizing: border-box;
+}
+
+/* =========================
+   NAVIGATION ITEMS
+========================= */
+
+.site-header .nav-links a {
+    position: relative !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+
+    height: var(--navbar-height) !important;
+    min-height: var(--navbar-height) !important;
+    max-height: var(--navbar-height) !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 13px !important;
+    font-weight: 500;
+    line-height: 1 !important;
+
+    color: #8d8d89;
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+/* Hover */
+
+.site-header .nav-links a:hover {
+    color: var(--white);
+}
+
+/* Active */
+
+.site-header .nav-links a.active {
+    color: var(--white);
+}
+
+/* =========================
+   ORANGE ACTIVE LINE
+========================= */
+
+/* Nonaktifkan indikator tambahan di header */
+
+.site-header::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Garis menu */
+
+.site-header .nav-links a::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    bottom: 0 !important;
+
+    width: 100%;
+    height: 2px !important;
+
+    background-color: var(--gold) !important;
+
+    display: block !important;
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform 0.2s ease;
+}
+
+/* Garis menu aktif */
+
+.site-header .nav-links a.active::after {
+    transform: scaleX(1);
+}
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+
+.site-header .menu-toggle {
+    display: none;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--gold);
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+/* =========================
+   SCROLL POSITION
+========================= */
+
+#beranda,
+#layanan,
+#lokasi,
+#konsultasi,
+#cek-status {
+    scroll-margin-top: 90px;
+}
+
+.customer-onepage-section {
+    width: 100%;
+    min-width: 0;
+    scroll-margin-top: 90px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 455px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 55%)
+        minmax(0, 45%);
+
+    align-items: center;
+
+    padding: 35px 0 30px;
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+/* =========================
+   HERO SUBTITLE
+========================= */
+
+.hero-subtitle {
+    font-family: 'Manrope', sans-serif;
+
+    font-size: clamp(19px, 1.8vw, 25px);
+    font-weight: 600;
+
+    line-height: 1.4;
+    letter-spacing: -1.4px;
+
+    margin-bottom: 14px;
+
+    color: var(--white);
+}
+
+.hero-subtitle span {
+    color: var(--gold);
+    margin-left: 8px;
+}
+
+/* =========================
+   HERO TITLE
+========================= */
+
+.hero-title {
+    font-family: 'Manrope', sans-serif;
+
+    font-size: clamp(40px, 4.3vw, 62px);
+    font-weight: 800;
+
+    line-height: 1.08;
+    letter-spacing: -2px;
+
+    color: var(--gold);
+    white-space: nowrap;
+
+    margin-bottom: 16px;
+}
+
+/* =========================
+   HERO DESCRIPTION
+========================= */
+
+.hero-description {
+    max-width: 490px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+    font-weight: 400;
+
+    line-height: 1.65;
+
+    margin-bottom: 25px;
+}
+
+/* =========================
+   PRIMARY BUTTON
+========================= */
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    min-height: 42px;
+    padding: 0 19px;
+
+    background-color: var(--gold);
+    border-radius: 7px;
+
+    color: #171511;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+.primary-button:hover {
+    background-color: #e8b87a;
+    transform: translateY(-2px);
+}
+
+.primary-button span {
+    font-size: 19px;
+    font-weight: 400;
+}
+
+/* =====================================================
+   SMARTPHONE ILLUSTRATION
+===================================================== */
+
+.hero-visual {
+    position: relative;
+
+    width: 100%;
+    height: 390px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    isolation: isolate;
+}
+
+/* =========================
+   ORBIT
+========================= */
+
+.orbit {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    border-radius: 50%;
+    border: 1px solid #353533;
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+}
+
+.orbit-outer {
+    width: 350px;
+    height: 350px;
+}
+
+.orbit-middle {
+    width: 270px;
+    height: 270px;
+}
+
+.orbit-inner {
+    width: 200px;
+    height: 200px;
+    border-color: #292929;
+}
+
+/* =========================
+   PHONE
+========================= */
+
+.phone {
+    position: relative;
+    z-index: 2;
+
+    width: 185px;
+    height: 350px;
+
+    padding: 9px;
+
+    border-radius: 38px;
+    border: 1px solid #63635f;
+
+    background: linear-gradient(
+        126deg,
+        #454542 0%,
+        #161616 100%
+    );
+
+    transform: rotate(7deg);
+
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================
+   PHONE SCREEN
+========================= */
+
+.phone-screen {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 30px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: radial-gradient(
+        ellipse at 39% 50%,
+        #312b22 0%,
+        #161615 65%,
+        #111111 100%
+    );
+}
+
+/* =========================
+   PHONE NOTCH
+========================= */
+
+.phone-notch {
+    position: absolute;
+
+    top: 11px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 68px;
+    height: 18px;
+
+    border-radius: 10px;
+    background-color: #090909;
+}
+
+/* =========================
+   PHONE CONTENT
+========================= */
+
+.phone-content {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+}
+
+/* =========================
+   REPAIR ICON
+========================= */
+
+.repair-icon {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 16px;
+
+    border-radius: 50%;
+
+    background: rgba(212, 165, 105, 0.13);
+    border: 1px solid rgba(212, 165, 105, 0.28);
+
+    color: var(--gold);
+}
+
+.repair-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* =========================
+   PHONE TEXT
+========================= */
+
+.phone-content h3 {
+    font-family: 'Manrope', sans-serif;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+.phone-content p {
+    font-size: 9px;
+    color: #777774;
+}
+
+/* =====================================================
+   FLOATING CARDS
+===================================================== */
+
+.floating-card {
+    position: absolute;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 15px;
+
+    border: 1px solid #494946;
+    border-radius: 10px;
+
+    background: rgba(47, 47, 46, 0.9);
+
+    box-shadow:
+        0 18px 30px rgba(0, 0, 0, 0.28);
+
+    backdrop-filter: blur(16px);
+}
+
+/* =========================
+   FLOATING ICON
+========================= */
+
+.floating-icon {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--gold);
+    border-radius: 6px;
+
+    color: #171511;
+}
+
+.floating-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* =========================
+   FLOATING TEXT
+========================= */
+
+.floating-text strong {
+    display: block;
+
+    color: var(--white);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.floating-text span {
+    display: block;
+
+    color: #858581;
+
+    font-size: 9px;
+    margin-top: 3px;
+}
+
+/* =========================
+   CARD POSITIONS
+========================= */
+
+.warranty-card {
+    top: 75px;
+    right: -10px;
+}
+
+.experience-card {
+    bottom: 65px;
+    left: -10px;
+}
+
+/* =====================================================
+   STATISTICS
+===================================================== */
+
+.statistics {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+/* =========================
+   STAT ITEM
+========================= */
+
+.stat-item {
+    min-height: 88px;
+
+    padding: 20px 18px;
+
+    border-right: 1px solid var(--border);
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+/* =========================
+   STAT NUMBER
+========================= */
+
+.stat-item h3 {
+    font-family: 'Manrope', sans-serif;
+
+    color: var(--gold);
+
+    font-size: 18px;
+    font-weight: 700;
+
+    line-height: 1.5;
+    margin-bottom: 6px;
+}
+
+/* =========================
+   STAT DESCRIPTION
+========================= */
+
+.stat-item p {
+    color: #777774;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    letter-spacing: 0.3px;
+}
+
+/* =====================================================
+   ABOUT SECTION
+===================================================== */
+
+.about-section {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 55px;
+
+    align-items: start;
+
+    padding: 65px 0 55px;
+}
+
+/* =========================
+   SMALL LABEL
+========================= */
+
+.small-label {
+    font-size: 10px;
+    font-weight: 700;
+
+    color: var(--gold);
+    letter-spacing: 1.6px;
+
+    margin-bottom: 24px;
+}
+
+/* =========================
+   ABOUT LEFT
+========================= */
+
+.about-left h2 {
+    font-family: 'Manrope', sans-serif;
+
+    font-size: 26px;
+
+    line-height: 1.3;
+    letter-spacing: -1.2px;
+
+    font-weight: 400;
+}
+
+/* =========================
+   ABOUT RIGHT
+========================= */
+
+.about-right {
+    padding-top: 20px;
+}
+
+.about-right p {
+    color: #949490;
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* =====================================================
+   RESPONSIVE LAPTOP
+===================================================== */
+
+@media (max-width: 1250px) {
+
+    .page-container {
+        padding: 0 55px;
+    }
+
+    .site-header .navbar {
+        padding: 0 55px !important;
+    }
+
+    .site-header .nav-links {
+        margin-right: 8% !important;
+    }
+
+    .hero-title {
+        font-size: clamp(39px, 4.5vw, 58px);
+    }
+
+    .hero-subtitle {
+        font-size: 24px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .warranty-card {
+        right: 0;
+    }
+
+    .experience-card {
+        left: 0;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .page-container {
+        padding: 0 30px;
+    }
+
+    .site-header .navbar {
+        padding: 0 30px !important;
+    }
+
+    .site-header .nav-links {
+        margin-right: 0 !important;
+        gap: 20px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 25px;
+
+        padding-top: 65px;
+    }
+
+    .hero-content {
+        max-width: 680px;
+    }
+
+    .hero-title {
+        font-size: clamp(39px, 6vw, 55px);
+    }
+
+    .hero-subtitle {
+        font-size: 26px;
+    }
+
+    .hero-visual {
+        max-width: 550px;
+        margin: 0 auto;
+    }
+
+    .statistics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .stat-item:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .about-section {
+        gap: 35px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    /* Container */
+
+    .page-container {
+        padding: 0 20px;
+    }
+
+    /* Navbar */
+
+    .site-header .navbar {
+        position: relative;
+
+        padding: 0 20px !important;
+        gap: 12px;
+    }
+
+    /* Brand */
+
+    .site-header .brand > span {
+        font-size: 12px;
+    }
+
+    /* Mobile toggle */
+
+    .site-header .menu-toggle {
+        display: block;
+    }
+
+    /* Mobile menu */
+
+    .site-header .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 75px;
+        left: 20px;
+        right: 20px;
+
+        width: auto;
+
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        background-color: #1b1b1b;
+
+        border: 1px solid #353533;
+        border-radius: 0 0 12px 12px;
+
+        z-index: 100;
+    }
+
+    .site-header .nav-links.show {
+        display: flex;
+    }
+
+    .site-header .nav-links a {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+
+        justify-content: flex-start;
+
+        padding: 17px 20px !important;
+
+        font-size: 13px !important;
+    }
+
+    /* Active line hidden on mobile */
+
+    .site-header .nav-links a::after {
+        display: none !important;
+    }
+
+    /* Hero */
+
+    .hero {
+        min-height: auto;
+        padding: 70px 0 35px;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(18px, 4.8vw, 24px);
+        letter-spacing: -0.8px;
+    }
+
+    .hero-subtitle span {
+        margin-left: 4px;
+    }
+
+    .hero-title {
+        font-size: clamp(37px, 10vw, 58px);
+
+        letter-spacing: -2px;
+
+        white-space: normal;
+        line-height: 1.1;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    /* Phone illustration */
+
+    .hero-visual {
+        height: 395px;
+
+        transform: scale(0.82);
+        transform-origin: center;
+
+        margin: -15px -20px;
+    }
+
+    /* Statistics */
+
+    .statistics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-item {
+        padding: 22px 12px;
+    }
+
+    .stat-item h3 {
+        font-size: 17px;
+    }
+
+    .stat-item p {
+        font-size: 8px;
+        line-height: 1.5;
+    }
+
+    /* About */
+
+    .about-section {
+        grid-template-columns: 1fr;
+        gap: 24px;
+
+        padding: 65px 0 75px;
+    }
+
+    .about-left h2 {
+        font-size: 26px;
+    }
+
+    .about-right {
+        padding-top: 0;
+    }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .hero-visual {
+        transform: scale(0.7);
+        margin: -40px -35px;
+    }
+
+    .hero-title {
+        font-size: 37px;
+    }
+
+    .site-header .brand {
+        gap: 8px;
+    }
+
+    .site-header .brand > span {
+        font-size: 11px;
+    }
+}

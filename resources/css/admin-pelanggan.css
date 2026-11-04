@@ -1,0 +1,422 @@
+
+/* ====================================
+   ADMIN PELANGGAN - NAYLA SERVICE
+   ==================================== */
+
+/* Menggunakan dasar layout admin-dashboard.css */
+
+.customers-page {
+    max-width: 1600px;
+    padding: 43px 44px 80px;
+    margin: 0 auto;
+}
+
+/* HEADING */
+.customers-heading {
+    margin-bottom: 33px;
+}
+
+.customers-heading .eyebrow {
+    margin-bottom: 19px;
+}
+
+.customers-heading h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(30px, 3.3vw, 42px);
+    font-weight: 600;
+    letter-spacing: -1.7px;
+    line-height: 1.2;
+    margin-bottom: 11px;
+    color: #f5f3f0;
+}
+
+.customers-description {
+    font-size: 13px;
+    color: #92918f;
+    line-height: 1.7;
+}
+
+/* STATISTIK PELANGGAN */
+.customer-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+    margin-bottom: 17px;
+}
+
+.customer-stat-card {
+    background: linear-gradient(
+        135deg,
+        #191a1a 0%,
+        #151616 100%
+    );
+    border: 1px solid #303131;
+    border-radius: 14px;
+    padding: 25px 22px;
+    min-height: 146px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.customer-stat-card .stat-label {
+    color: #8b8986;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    margin-bottom: 15px;
+}
+
+.customer-stat-card strong {
+    color: #f5f3f0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 7px;
+}
+
+.customer-stat-card > span {
+    color: #92918f;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* DAFTAR PELANGGAN */
+.customers-card {
+    background: linear-gradient(
+        130deg,
+        #181919 0%,
+        #151616 100%
+    );
+    border: 1px solid #303131;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* TOOLBAR */
+.customers-toolbar {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    padding: 15px;
+    border-bottom: 1px solid #303131;
+}
+
+.customer-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 45px;
+    padding: 0 15px;
+    border: 1px solid #393a3a;
+    border-radius: 8px;
+    background: #111212;
+    min-width: 0;
+}
+
+.customer-search:focus-within {
+    border-color: #dda955;
+    box-shadow: 0 0 0 2px rgba(221, 169, 85, .08);
+}
+
+.customer-search svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: #777773;
+}
+
+.customer-search input {
+    width: 100%;
+    min-width: 0;
+    background: transparent;
+    color: #f5f3f0;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.customer-search input::placeholder {
+    color: #73716f;
+}
+
+.customers-toolbar select {
+    width: 190px;
+    min-width: 175px;
+    height: 45px;
+    border: 1px solid #393a3a;
+    border-radius: 8px;
+    background: #151616;
+    color: #ddd9d4;
+    font-family: inherit;
+    font-size: 13px;
+    padding: 0 12px;
+    outline: none;
+    cursor: pointer;
+}
+
+.customers-toolbar select:focus {
+    border-color: #dda955;
+}
+
+/* BARIS PELANGGAN */
+.customer-row {
+    display: grid;
+    grid-template-columns:
+        minmax(220px, 1.5fr)
+        minmax(155px, 1.1fr)
+        minmax(140px, 1fr)
+        minmax(140px, .75fr);
+    align-items: center;
+    gap: 18px;
+    padding: 17px 16px;
+    margin: 0 16px;
+    border-bottom: 1px solid #303131;
+    min-height: 78px;
+    transition: background .2s;
+}
+
+.customer-row:last-child {
+    border-bottom: none;
+}
+
+.customer-row:hover {
+    background: rgba(255, 255, 255, .025);
+}
+
+.customer-identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.customer-avatar {
+    width: 41px;
+    height: 41px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #30271c;
+    color: #dda955;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.customer-person,
+.customer-device,
+.customer-transactions {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.customer-person strong,
+.customer-device strong,
+.customer-transactions strong {
+    color: #f4f1ec;
+    font-size: 13px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.customer-person span {
+    color: #8c8985;
+    font-size: 11px;
+}
+
+.field-label {
+    color: #85817d;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .3px;
+}
+
+.customer-status {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* BADGE */
+.customer-status .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 30px;
+    font-size: 10px;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.customer-status .badge-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.customer-status .status-badge.warning {
+    color: #e1ac61;
+    background: #382c1b;
+}
+
+.customer-status .status-badge.info {
+    color: #6bbaf1;
+    background: #193747;
+}
+
+.customer-status .status-badge.purple {
+    color: #bd8ce8;
+    background: #352440;
+}
+
+.customer-status .status-badge.success {
+    color: #47d198;
+    background: #193c2e;
+}
+
+.customer-status .status-badge.cancelled {
+    color: #d3a05d;
+    background: #382c1b;
+}
+
+/* KONDISI KOSONG */
+.customers-empty {
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.customers-empty[hidden],
+.customers-list[hidden] {
+    display: none !important;
+}
+
+.empty-icon {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 15px;
+    background: #30271c;
+    border-radius: 50%;
+    color: #dda955;
+    font-size: 28px;
+}
+
+.customers-empty h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.customers-empty p {
+    color: #92918f;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+.customers-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 18px;
+    border-top: 1px solid #303131;
+    font-size: 11px;
+    color: #85817d;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1400px) {
+    .customers-page {
+        padding: 35px 28px 65px;
+    }
+
+    .customer-row {
+        gap: 12px;
+        grid-template-columns:
+            minmax(175px, 1.4fr)
+            minmax(130px, 1fr)
+            minmax(120px, .9fr)
+            minmax(125px, .8fr);
+    }
+}
+
+@media (max-width: 1100px) {
+    .customer-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 17px 22px;
+        padding: 20px 12px;
+    }
+
+    .customer-status {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 900px) {
+    .customers-page {
+        padding: 28px 20px 55px;
+    }
+}
+
+@media (max-width: 640px) {
+    .customers-heading h2 {
+        font-size: 32px;
+    }
+
+    .customer-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .customer-stat-card {
+        min-height: 125px;
+        padding: 18px;
+    }
+
+    .customer-stat-card strong {
+        font-size: 26px;
+    }
+
+    .customers-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .customers-toolbar select,
+    .customer-search {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .customer-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin: 0 12px;
+        padding: 20px 8px;
+    }
+
+    .customer-device,
+    .customer-transactions {
+        padding-left: 56px;
+    }
+
+    .customer-status {
+        padding-left: 56px;
+    }
+
+    .customers-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

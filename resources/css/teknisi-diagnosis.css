@@ -1,0 +1,1112 @@
+
+/* ============================================
+   NAYLA SERVICE - DIAGNOSIS TEKNISI
+============================================ */
+
+:root {
+    --tech-bg: #0d100e;
+    --tech-sidebar: #111412;
+    --tech-panel: #161a17;
+    --tech-border: #303530;
+    --tech-gold: #e8ad53;
+    --tech-white: #f4f3ef;
+    --tech-muted: #919890;
+    --tech-sidebar-width: 234px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--tech-bg);
+    color: var(--tech-white);
+    -webkit-font-smoothing: antialiased;
+}
+
+body.diagnosis-modal-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+svg {
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ============================================
+   SIDEBAR
+============================================ */
+
+.tech-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.tech-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+
+    width: var(--tech-sidebar-width);
+    padding: 28px 16px 20px;
+
+    background: var(--tech-sidebar);
+    border-right: 1px solid var(--tech-border);
+}
+
+.tech-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 7px;
+    margin-bottom: 54px;
+}
+
+.tech-brand-icon {
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+    background: var(--tech-gold);
+
+    color: #17140d;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.tech-brand-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.tech-brand-name strong {
+    color: var(--tech-gold);
+}
+
+.tech-menu-caption {
+    padding-left: 9px;
+    margin-bottom: 16px;
+
+    color: #777d75;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.tech-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tech-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    min-height: 47px;
+    padding: 0 13px;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    color: #969b96;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.tech-nav-item:hover {
+    color: #fff;
+    background: #1d211d;
+}
+
+.tech-nav-item.active {
+    color: var(--tech-gold);
+    border-color: var(--tech-gold);
+    background: #302b23;
+}
+
+.tech-nav-item svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+}
+
+.tech-nav-count {
+    display: grid;
+    place-items: center;
+
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+
+    border-radius: 50%;
+    background: #44321f;
+
+    color: var(--tech-gold);
+    font-size: 11px;
+}
+
+.tech-sidebar-footer {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-top: auto;
+    padding: 20px 7px 0;
+    border-top: 1px solid var(--tech-border);
+}
+
+.tech-user-avatar,
+.tech-topbar-avatar {
+    display: grid;
+    place-items: center;
+
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: var(--tech-gold);
+
+    color: #17140d;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.tech-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tech-user-info strong {
+    font-size: 12px;
+}
+
+.tech-user-info span {
+    color: #777f78;
+    font-size: 10px;
+}
+
+/* ============================================
+   MAIN + TOPBAR
+============================================ */
+
+.tech-main {
+    width: calc(100% - var(--tech-sidebar-width));
+    min-width: 0;
+    margin-left: var(--tech-sidebar-width);
+}
+
+.tech-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    height: 82px;
+    padding: 0 40px;
+
+    background: var(--tech-bg);
+    border-bottom: 1px solid var(--tech-border);
+}
+
+.tech-topbar-left,
+.tech-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tech-topbar-date {
+    margin-bottom: 6px;
+
+    color: var(--tech-gold);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.tech-topbar h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.tech-duty-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px 11px;
+    border-radius: 25px;
+
+    color: #4bc78b;
+    background: #113023;
+    font-size: 9px;
+}
+
+.tech-duty-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #49d88e;
+}
+
+.tech-mobile-toggle {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: var(--tech-gold);
+    font-size: 23px;
+}
+
+.tech-content {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 34px 40px 70px;
+}
+
+/* ============================================
+   BACK + HEADING
+============================================ */
+
+.diagnosis-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: 25px;
+
+    color: #a3a99f;
+    font-size: 11px;
+}
+
+.diagnosis-back:hover {
+    color: var(--tech-gold);
+}
+
+.diagnosis-back svg {
+    width: 15px;
+    height: 15px;
+    color: var(--tech-gold);
+}
+
+.diagnosis-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    margin-bottom: 26px;
+}
+
+.tech-eyebrow {
+    margin-bottom: 13px;
+
+    color: var(--tech-gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+}
+
+.diagnosis-heading h2 {
+    margin-bottom: 10px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.diagnosis-heading p:last-child {
+    color: var(--tech-muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.diagnosis-save-state {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+
+    color: #9da79b;
+    font-size: 10px;
+}
+
+.diagnosis-save-state > span:first-child {
+    color: #4dc98b;
+    font-size: 14px;
+}
+
+.diagnosis-save-state.is-saved {
+    color: #4dc98b;
+}
+
+/* ============================================
+   CARD
+============================================ */
+
+.diagnosis-card {
+    width: min(100%, 890px);
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border: 1px solid var(--tech-border);
+    border-radius: 12px;
+    background: var(--tech-panel);
+}
+
+/* CUSTOMER HEADER */
+
+.diagnosis-customer {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    min-height: 97px;
+    padding: 19px 22px;
+
+    border-bottom: 1px solid var(--tech-border);
+}
+
+.diagnosis-device-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 9px;
+    background: #31271c;
+    color: var(--tech-gold);
+}
+
+.diagnosis-device-icon svg {
+    width: 21px;
+    height: 21px;
+}
+
+.diagnosis-customer-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.diagnosis-customer-info p {
+    margin-bottom: 7px;
+    color: var(--tech-gold);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.diagnosis-customer-info h3 {
+    margin-bottom: 5px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.diagnosis-customer-info > span {
+    color: #9aa198;
+    font-size: 10px;
+}
+
+.diagnosis-badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+
+    padding: 7px 10px;
+    border-radius: 20px;
+
+    background: #10303b;
+    color: #63b9df;
+    font-size: 10px;
+}
+
+.diagnosis-blue-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #63b9df;
+}
+
+.diagnosis-card-body {
+    padding: 18px 22px 20px;
+}
+
+/* ============================================
+   KELUHAN CUSTOMER
+============================================ */
+
+.diagnosis-complaint {
+    margin-bottom: 20px;
+    padding: 16px;
+
+    border: 1px solid #303831;
+    border-radius: 8px;
+    background: #1c211d;
+}
+
+.diagnosis-complaint > span {
+    display: block;
+    margin-bottom: 9px;
+
+    color: #838b80;
+    font-size: 9px;
+    letter-spacing: .6px;
+}
+
+.diagnosis-complaint p {
+    margin-bottom: 12px;
+
+    color: #c5c9c2;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.diagnosis-complaint small {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #788178;
+    font-size: 9px;
+}
+
+.diagnosis-complaint small svg {
+    width: 13px;
+    height: 13px;
+}
+
+/* ============================================
+   FORM SECTIONS
+============================================ */
+
+.diagnosis-form-section {
+    padding-bottom: 20px;
+}
+
+.diagnosis-form-section + .diagnosis-form-section {
+    padding-top: 20px;
+    border-top: 1px solid var(--tech-border);
+}
+
+.diagnosis-step-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 17px;
+}
+
+.diagnosis-step-number {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 28px;
+    height: 28px;
+
+    border: 1px solid #86612e;
+    border-radius: 50%;
+
+    color: var(--tech-gold);
+    font-size: 10px;
+}
+
+.diagnosis-step-heading h3 {
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.diagnosis-step-heading p {
+    color: #929a90;
+    font-size: 10px;
+}
+
+/* INPUT */
+
+.diagnosis-field {
+    margin-bottom: 14px;
+}
+
+.diagnosis-field label {
+    display: block;
+    margin-bottom: 9px;
+
+    color: #c3c7c0;
+    font-size: 11px;
+}
+
+.diagnosis-field textarea,
+.diagnosis-input-wrap {
+    width: 100%;
+
+    border: 1px solid #404740;
+    border-radius: 8px;
+
+    background: #111512;
+    color: #f0efeb;
+}
+
+.diagnosis-field textarea {
+    display: block;
+    min-height: 106px;
+    padding: 14px;
+
+    resize: vertical;
+    outline: none;
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.diagnosis-field textarea:focus,
+.diagnosis-input-wrap:focus-within {
+    border-color: var(--tech-gold);
+}
+
+.diagnosis-field textarea::placeholder,
+.diagnosis-input-wrap input::placeholder {
+    color: #777f76;
+}
+
+.diagnosis-character-count {
+    margin-top: 5px;
+    text-align: right;
+    color: #7b8379;
+    font-size: 9px;
+}
+
+/* ============================================
+   UPLOAD
+============================================ */
+
+.diagnosis-upload {
+    margin-top: 12px;
+}
+
+.diagnosis-upload-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    min-height: 47px;
+    padding: 0 14px;
+
+    border: 1px dashed #444c43;
+    border-radius: 8px;
+
+    color: #a3aaa0;
+    cursor: pointer;
+}
+
+.diagnosis-upload-label:hover {
+    border-color: var(--tech-gold);
+}
+
+.diagnosis-upload-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 10px;
+}
+
+.diagnosis-upload-left svg {
+    width: 17px;
+    height: 17px;
+}
+
+.diagnosis-upload-action {
+    color: var(--tech-gold);
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.diagnosis-upload-help {
+    margin-top: 7px;
+
+    color: #767d74;
+    font-size: 9px;
+}
+
+.diagnosis-photo-preview {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.diagnosis-photo-preview:empty {
+    display: none;
+}
+
+.diagnosis-preview-item {
+    width: 100px;
+    overflow: hidden;
+
+    border: 1px solid #3c433b;
+    border-radius: 7px;
+    background: #20251f;
+}
+
+.diagnosis-preview-item img {
+    display: block;
+    width: 100%;
+    height: 76px;
+    object-fit: cover;
+}
+
+.diagnosis-preview-item span {
+    display: block;
+    overflow: hidden;
+
+    padding: 6px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    color: #b7bdb4;
+    font-size: 9px;
+}
+
+/* ============================================
+   BIAYA & ESTIMASI
+============================================ */
+
+.diagnosis-cost-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.diagnosis-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    height: 40px;
+    padding: 0 12px;
+}
+
+.diagnosis-input-wrap input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+
+    border: 0;
+    outline: 0;
+    background: transparent;
+
+    color: #f0efeb;
+    font-size: 11px;
+}
+
+.diagnosis-input-wrap > span {
+    color: #9ca39a;
+    font-size: 11px;
+}
+
+.diagnosis-input-wrap svg {
+    width: 16px;
+    height: 16px;
+    color: #929a90;
+}
+
+/* TOTAL ESTIMASI */
+
+.diagnosis-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 13px 15px;
+    margin-top: 8px;
+
+    border: 1px solid #60482a;
+    border-radius: 8px;
+    background: #27221b;
+}
+
+.diagnosis-total > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.diagnosis-total > div strong {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.diagnosis-total > div span {
+    color: #b4aa9d;
+    font-size: 9px;
+}
+
+.diagnosis-total > strong {
+    color: var(--tech-gold);
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* ============================================
+   FOOTER
+============================================ */
+
+.diagnosis-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 15px 22px;
+
+    border-top: 1px solid var(--tech-border);
+}
+
+.diagnosis-reviewer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+
+    color: #979e96;
+    font-size: 10px;
+}
+
+.diagnosis-reviewer svg {
+    width: 16px;
+    height: 16px;
+}
+
+.diagnosis-reviewer strong {
+    color: #e3e5df;
+    font-weight: 600;
+}
+
+.diagnosis-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+}
+
+.diagnosis-draft-button,
+.diagnosis-submit-button {
+    min-height: 37px;
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.diagnosis-draft-button {
+    border: 1px solid #474d46;
+    background: transparent;
+    color: #d0d3cc;
+}
+
+.diagnosis-draft-button:hover {
+    border-color: var(--tech-gold);
+}
+
+.diagnosis-submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border: 0;
+    background: var(--tech-gold);
+    color: #17140d;
+}
+
+.diagnosis-submit-button:hover {
+    background: #f3bf72;
+}
+
+.diagnosis-submit-button svg {
+    width: 15px;
+    height: 15px;
+}
+
+/* ============================================
+   MODAL
+============================================ */
+
+.diagnosis-modal-backdrop[hidden] {
+    display: none !important;
+}
+
+.diagnosis-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    background: rgba(0,0,0,.75);
+}
+
+.diagnosis-modal {
+    width: min(100%, 470px);
+    overflow: hidden;
+
+    border: 1px solid #454c43;
+    border-radius: 12px;
+    background: #1b201c;
+}
+
+.diagnosis-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 19px 22px;
+    border-bottom: 1px solid var(--tech-border);
+}
+
+.diagnosis-modal-header h3 {
+    font-size: 16px;
+}
+
+.diagnosis-modal-header button {
+    border: 0;
+    background: transparent;
+    color: #f0efeb;
+    font-size: 26px;
+}
+
+.diagnosis-modal-body {
+    padding: 22px;
+}
+
+.diagnosis-modal-body > p:first-child {
+    color: #d0d4ca;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.diagnosis-modal-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 20px 0;
+    padding: 14px;
+
+    border: 1px solid #5b4428;
+    border-radius: 8px;
+    background: #2b251c;
+}
+
+.diagnosis-modal-summary span {
+    color: #c4b4a0;
+    font-size: 11px;
+}
+
+.diagnosis-modal-summary strong {
+    color: var(--tech-gold);
+    font-size: 16px;
+}
+
+.diagnosis-demo-notice {
+    color: #bca88d;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.diagnosis-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+
+    padding: 0 22px 22px;
+}
+
+.diagnosis-modal-footer button {
+    min-height: 35px;
+    padding: 0 15px;
+
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+#cancelDiagnosis {
+    border: 1px solid #454c43;
+    background: transparent;
+    color: #e7e8e4;
+}
+
+#confirmDiagnosis {
+    border: 0;
+    background: var(--tech-gold);
+    color: #17140d;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 1200px) {
+    :root {
+        --tech-sidebar-width: 215px;
+    }
+
+    .tech-topbar {
+        padding: 0 25px;
+    }
+
+    .tech-content {
+        padding: 28px 25px 65px;
+    }
+}
+
+@media (max-width: 900px) {
+    .diagnosis-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .diagnosis-card {
+        width: 100%;
+    }
+
+    .diagnosis-card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .diagnosis-actions {
+        width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .tech-sidebar {
+        width: 245px;
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+    }
+
+    .tech-sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .tech-main {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .tech-mobile-toggle {
+        display: block;
+    }
+
+    .tech-topbar {
+        height: 72px;
+        padding: 0 18px;
+    }
+
+    .tech-topbar h1 {
+        font-size: 17px;
+    }
+
+    .tech-duty-status {
+        padding: 9px;
+        font-size: 0;
+    }
+
+    .tech-content {
+        padding: 24px 16px 55px;
+    }
+
+    .diagnosis-heading h2 {
+        font-size: 24px;
+    }
+
+    .diagnosis-customer {
+        flex-wrap: wrap;
+        padding: 16px;
+    }
+
+    .diagnosis-card-body {
+        padding: 16px;
+    }
+
+    .diagnosis-cost-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .diagnosis-card-footer {
+        padding: 16px;
+    }
+
+    .diagnosis-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .diagnosis-draft-button,
+    .diagnosis-submit-button {
+        width: 100%;
+        min-height: 42px;
+    }
+}

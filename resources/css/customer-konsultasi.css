@@ -1,0 +1,775 @@
+
+:root {
+    --bg: #191919;
+    --card: #222326;
+    --input: #1e1f21;
+    --gold: #d4a569;
+    --white: #f5f5f5;
+    --muted: #a2a3a7;
+    --border: #3b3c40;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, input, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.page-container {
+    max-width: 1440px;
+    min-height: 100vh;
+    padding: 0 100px;
+    margin: auto;
+}
+
+/* NAVBAR */
+
+.site-header {
+    border-bottom: 1px solid #303030;
+}
+
+.navbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+}
+
+.brand-logo {
+    width: 35px;
+    height: 35px;
+    background: var(--gold);
+    color: #171511;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.brand > span:last-child {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.brand strong {
+    color: var(--gold);
+}
+
+.nav-links {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    gap: 35px;
+    margin-right: 27%;
+}
+
+.nav-links a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #929292;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+}
+
+.nav-links a.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: var(--gold);
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: none;
+    color: var(--gold);
+    font-size: 26px;
+}
+
+/* LAYOUT */
+
+.consultation-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 85px;
+    padding: 58px 0 85px;
+    background: radial-gradient(
+        ellipse at 25% 75%,
+        rgba(117, 91, 54, .09),
+        transparent 50%
+    );
+}
+
+/* KOLOM KIRI */
+
+.consultation-intro {
+    padding: 15px 0 0 20px;
+}
+
+.section-badge {
+    display: inline-flex;
+    border: 1px solid #756144;
+    background: rgba(212, 165, 105, .07);
+    color: var(--gold);
+    border-radius: 25px;
+    padding: 6px 12px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 33px;
+}
+
+.consultation-intro h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(43px, 4.3vw, 62px);
+    line-height: 1.2;
+    letter-spacing: -2.8px;
+    font-weight: 800;
+    margin-bottom: 38px;
+}
+
+.consultation-intro h1 span {
+    color: var(--gold);
+}
+
+.intro-description {
+    color: #b0b1b6;
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 435px;
+    margin-bottom: 48px;
+}
+
+/* BENEFIT */
+
+.benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.benefit-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid #64563e;
+    background: rgba(212,165,105,.12);
+    display: grid;
+    place-items: center;
+}
+
+.benefit-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--gold);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.benefit h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.benefit p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* KARTU FORM */
+
+.consultation-card {
+    min-width: 0;
+    background: linear-gradient(135deg, #242528, #202123);
+    border-radius: 17px;
+    padding: 39px;
+    box-shadow: 0 20px 65px rgba(0,0,0,.15);
+}
+
+.form-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 31px;
+}
+
+.form-heading-icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    background: #3b3d43;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+}
+
+.form-heading-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--gold);
+    stroke-width: 1.8;
+    fill: none;
+    stroke-linejoin: round;
+}
+
+.form-heading h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -.5px;
+}
+
+.form-heading p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* FORM INPUT */
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+.form-group > label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #c3c4c9;
+    margin-bottom: 10px;
+}
+
+.form-group > label svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    stroke: #9da0a7;
+    stroke-width: 1.8;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    height: 49px;
+    gap: 10px;
+    padding: 0 13px;
+    border: 1px solid var(--border);
+    background: var(--input);
+    border-radius: 12px;
+    transition: border-color .2s;
+}
+
+.input-wrapper:focus-within,
+.textarea-wrapper:focus-within {
+    border-color: var(--gold);
+}
+
+.input-wrapper svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    stroke: #898b90;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.input-wrapper input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--white);
+    font-size: 14px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #9b9da4;
+}
+
+/* TEXTAREA */
+
+.textarea-wrapper {
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 15px 10px;
+    transition: border-color .2s;
+}
+
+.textarea-wrapper textarea {
+    width: 100%;
+    min-height: 78px;
+    display: block;
+    resize: vertical;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+#charCount {
+    display: block;
+    color: #82848b;
+    font-size: 10px;
+    text-align: right;
+    margin-top: 5px;
+}
+
+/* UPLOAD FOTO */
+
+.upload-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 76px;
+    padding: 14px;
+    border: 1px dashed #404249;
+    border-radius: 12px;
+    margin: 22px 0;
+}
+
+.upload-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #313338;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.upload-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: #aeb0b8;
+    stroke-width: 1.8;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.upload-description {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+.upload-description strong {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.upload-description span {
+    color: #a2a4aa;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+.upload-button {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #f1f1f1;
+    font-size: 12px;
+    padding: 9px 12px;
+    border: 1px solid #404249;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    border-color: var(--gold);
+}
+
+.upload-button span {
+    font-size: 19px;
+}
+
+.file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.file-input:focus-visible + label {
+    outline: 2px solid var(--gold);
+}
+
+.file-error {
+    color: #ffa9a9;
+    font-size: 12px;
+    margin: -10px 0 15px;
+}
+
+.file-error[hidden] {
+    display: none;
+}
+
+/* FORM FOOTER */
+
+.form-footer {
+    border-top: 1px solid #313237;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 25px;
+}
+
+.agreement {
+    display: flex;
+    align-items: flex-start;
+    align-self: stretch;
+    gap: 12px;
+    color: #bfc0c6;
+    font-size: 13px;
+    line-height: 1.6;
+    cursor: pointer;
+}
+
+.agreement input {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--gold);
+    flex-shrink: 0;
+}
+
+.submit-button {
+    min-width: 225px;
+    height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--gold);
+    color: #171511;
+    font-weight: 700;
+    font-size: 15px;
+    transition: background .2s, transform .2s;
+}
+
+.submit-button span {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.submit-button:not(:disabled):hover {
+    background: #efbe7e;
+    transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+    background: #3b3d42;
+    color: #7d7f85;
+    cursor: not-allowed;
+}
+
+.alert-error,
+.alert-info {
+    border-radius: 9px;
+    padding: 12px 15px;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.alert-error {
+    color: #ffbaba;
+    background: #392022;
+}
+
+.alert-info {
+    color: #f0d5a7;
+    background: #3a3021;
+}
+
+.alert-error ul {
+    padding-left: 20px;
+}
+
+/* LAPTOP */
+
+@media (max-width: 1200px) {
+    .page-container {
+        padding: 0 50px;
+    }
+
+    .nav-links {
+        margin-right: 5%;
+    }
+
+    .consultation-layout {
+        gap: 35px;
+    }
+
+    .consultation-card {
+        padding: 30px;
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 950px) {
+    .page-container {
+        padding: 0 30px;
+    }
+
+    .nav-links {
+        margin-right: 0;
+        gap: 20px;
+    }
+
+    .consultation-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .consultation-intro {
+        padding: 0;
+    }
+
+    .consultation-intro h1 {
+        font-size: 49px;
+    }
+
+    .consultation-intro h1 br {
+        display: none;
+    }
+
+    .consultation-intro h1 span {
+        display: block;
+    }
+
+    .benefits {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .benefit {
+        align-items: flex-start;
+    }
+
+    .benefit h3 {
+        font-size: 15px;
+    }
+
+    .benefit p {
+        font-size: 12px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+    .page-container {
+        padding: 0 20px;
+    }
+
+    .navbar {
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #222;
+        border: 1px solid #3b3c40;
+        z-index: 10;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        height: auto;
+        padding: 17px 20px;
+    }
+
+    .nav-links a.active::after {
+        display: none;
+    }
+
+    .consultation-layout {
+        padding: 55px 0;
+    }
+
+    .consultation-intro h1 {
+        font-size: 40px;
+        letter-spacing: -1.7px;
+    }
+
+    .intro-description {
+        font-size: 14px;
+    }
+
+    .benefits {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .consultation-card {
+        padding: 24px 18px;
+        border-radius: 15px;
+    }
+
+    .form-heading h2 {
+        font-size: 20px;
+    }
+
+    .form-heading p {
+        font-size: 11px;
+    }
+
+    .upload-box {
+        flex-wrap: wrap;
+    }
+
+    .upload-button {
+        margin-left: auto;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+}
+
+/* ===================================
+   PENYESUAIAN KONSULTASI DI BERANDA
+=================================== */
+
+#konsultasi .consultation-layout {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 65px 20px 75px;
+    gap: 55px;
+}
+
+/* Kolom kiri */
+#konsultasi .consultation-info h1 {
+    font-size: clamp(36px, 4vw, 54px);
+    line-height: 1.2;
+}
+
+#konsultasi .consultation-info > p {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Kolom formulir */
+#konsultasi .consultation-card {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 28px;
+}
+
+#konsultasi .consultation-card h2 {
+    font-size: 22px;
+}
+
+/* Input formulir */
+#konsultasi input,
+#konsultasi select {
+    font-size: 13px;
+}
+
+#konsultasi textarea {
+    font-size: 13px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    #konsultasi .consultation-layout {
+        padding: 55px 16px;
+        gap: 30px;
+    }
+
+    #konsultasi .consultation-card {
+        max-width: 100%;
+        padding: 22px;
+    }
+}
